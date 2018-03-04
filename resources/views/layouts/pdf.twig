@@ -1,0 +1,24 @@
+{% set projectName = prjectName ?? 'Project.Name' %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <link rel="stylesheet" href="{{ mix('css/pdf.css')|trim('/', 'left') }}">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="author" content="axmit">
+        <link rel="icon" href="/icon.ico">
+
+        <title>
+            {% if(block('page_title') is defined) %}
+                {{ block('page_title') ~ ' :: ' ~ projectName }}
+            {% else %}
+                {{ projectName }}
+            {% endif %}
+        </title>
+    </head>
+    <body>
+        <div {{ block('body_attributes') }}>
+            {{ block('content') }}
+        </div>
+    </body>
+</html>

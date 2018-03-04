@@ -1,0 +1,4 @@
+*
+!public/
+!twig/
+!.gitignore

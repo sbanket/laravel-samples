@@ -1,0 +1,42 @@
+{% extends 'layouts/guest' %}
+
+{% import 'macros/messages' as messages %}
+
+{% block content %}
+    <div class="row fill-90-vertical-viewport align-items-center justify-content-center">
+        <div class="col-12 col-md-6">
+            <div class="signin-form-container">
+                {% include 'vendor.flash.message' %}
+
+                <ax-toggle ns="login-form-toggle" name="fade">
+                    <ax-form method="post" action="{{ route('login.submit') }}" name="login-form">
+                        <ax-input path="email" mode="email" placeholder="Email" required autofocus>Email</ax-input>
+                        <ax-input path="password" mode="password" placeholder="Password" required>Password</ax-input>
+
+                        <div class="checkbox mb-3">
+                            <ax-checkbox path="remember" value="1" false-value="">
+                                Запомнить
+                            </ax-checkbox>
+                        </div>
+
+                        <ax-form-button class="btn btn-lg btn-info btn-block" label="Войти">
+                            <span class="fa fa-refresh fa-spin"></span>
+                        </ax-form-button>
+
+                        <div class="text-center mt-3">
+                            <a class="text-right" href="{{ route('password.request') }}">
+                                Забыли пароль?
+                            </a>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-baseline mt-5">
+                            <span>Еще нет аккаунта?</span>
+                            <a href="{{ route('registration.form') }}" class="btn btn-success">Регистрация</a>
+                        </div>
+                    </ax-form>
+                </ax-toggle>
+                <login-page-handler form-name="login-form" toggle-name="login-form-toggle"></login-page-handler>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% block top_nav %}
+    <ul class="navigation-menu">
+        {% if (Auth.check()) %}
+            {% import 'macros/username' as username %}
+            <li class="has-submenu last-elements">
+                <a href v-on:click.prevent>
+                    <b>{{ username.username(Auth.user) }}</b>
+                </a>
+                <ul class="submenu">
+                    <li>
+                        <a href="{{ route('employee.home', {'username': Auth.user.username }) }}">
+                            Мой профиль
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('user.profile') }}">
+                            Настройки профиля
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-danger" href="{{ route('logout') }}">
+                            Выйти
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        {% endif %}
+    </ul>
+{% endblock %}

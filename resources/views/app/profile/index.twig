@@ -1,0 +1,44 @@
+{% extends 'layouts/default' %}
+
+{% import 'macros/username' as username %}
+{% import 'macros/messages' as messages %}
+
+{% block page_title %}
+    Профиль {{ user.username }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Настройки профиля {{ username.usernameLink(user) }}</h1>
+
+        <h3 class="text-center">Пароль:</h3>
+        <div class="clearfix mb-3"></div>
+        <div class="container row justify-content-center">
+            <div class="col-12 col-md-8">
+                {{ messages.alerts(errors) }}
+                {% include 'vendor.flash.message' %}
+                <form class="form-horizontal" method="post" action="{{ route('user.profile.update.password') }}">
+                    {{ csrf_field() }}
+
+                    <div class="form-group">
+                        <label class="form-control-label" for="current_password">Текущий пароль</label>
+                        <input class="form-control" type="password" name="current_password" id="current_password">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label" for="password">Новый пароль</label>
+                        <input class="form-control" type="password" name="password" id="password">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="password_confirmation">Подтвердите пароль</label>
+                        <input class="form-control" type="password" name="password_confirmation" id="password_confirmation">
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-danger float-right" type="submit">Изменить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

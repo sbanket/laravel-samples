@@ -1,0 +1,19 @@
+{% macro username(user, class) %}
+    @<span class="{{ class }}">{{ user.username }}</span>
+{% endmacro %}
+
+{% macro usernameLink(user, linkClass, class) %}
+    {% import _self as username %}
+
+    {% set uri = userlink(user) %}
+
+    {% if(uri is defined) %}
+        <a href="{{ uri }}" class="{{ linkClass|default('userlink') }}">
+    {% endif %}
+
+    {{ username.username(user, class) }}
+
+    {% if(uri is defined) %}
+        </a>
+    {% endif %}
+{% endmacro %}

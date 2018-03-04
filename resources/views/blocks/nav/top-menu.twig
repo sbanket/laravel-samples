@@ -1,0 +1,24 @@
+<ul class="navigation-menu">
+    {% for item in menu %}
+        {% if item.hasChildren %}
+            <li class="has-submenu {% if item.isActive %}active{% endif %}">
+                <a href v-on:click.prevent>
+                    <b>{{ item.title }}</b>
+                </a>
+                <ul class="submenu">
+                    {% for subItem in item.children %}
+                        <li class="{% if subItem.isActive %}active{% endif %}">
+                            <a href="{{ subItem.url }}">
+                                {{ subItem.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% else %}
+            <li class="{% if item.isActive %}active{% endif %}">
+                <a href="{{ item.url }}">{{ item.title }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>

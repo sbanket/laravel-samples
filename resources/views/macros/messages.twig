@@ -1,0 +1,9 @@
+{% macro alerts(errors, namespace) %}
+    {% if (errors.any()) %}
+        <div class="alert alert-{{ namespace|default('danger') }}">
+            {% for message in errors.all() %}
+                <div>{{ message|raw }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro %}

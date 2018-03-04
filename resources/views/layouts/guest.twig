@@ -1,0 +1,18 @@
+{% extends 'layouts/base' %}
+
+{% block head_meta %}
+    <link rel="stylesheet" href="{{ mix('/css/guest.css') }}">
+    <script src="{{ mix('/js/manifest.js') }}" defer></script>
+    <script src="{{ mix('/js/vendor.js') }}" defer></script>
+    <script src="{{ mix('/js/core.js') }}" defer></script>
+    <script src="{{ mix('/js/guest.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
+    <div id="guest-app" class="container">
+        {{ block('content') }}
+    </div>
+{% endblock %}
+
+{% block body_scripts %}
+{% endblock %}
