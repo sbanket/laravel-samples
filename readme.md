@@ -1,5 +1,5 @@
 # Laravel code samples
-These repository contains some code samples to build simple application using Laravel framework
+This repository contains some code samples to build application using Laravel framework
 
 ## Samples include:
 
@@ -17,7 +17,7 @@ These repository contains some code samples to build simple application using La
 **Several examples of implemented functionality:**
 
 - Module for scheduling notifications (`Axmit\Notificaton`)
-- Simple Achievement module demonstrating some features listed above (`Project\Company`)
+- Simple Achievement module demonstrating some features listed above (`Project\Achievement`)
 
 
 
